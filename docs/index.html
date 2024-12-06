@@ -12,7 +12,7 @@
 
   <meta name="author" content="Louis Manière">
   <meta name="dcterms.date" content="2024-12-06">
-  <title>sqlmasterhbv</title>
+  <title>Introduction aux bases de données relationnelles</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="custom.css">
@@ -330,7 +395,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">sqlmasterhbv</h1>
+  <h1 class="title">Introduction aux bases de données relationnelles</h1>
   <p class="subtitle">Master Hydrosystèmes et Bassins Versants</p>
 
 <div class="quarto-title-authors">
@@ -386,8 +451,21 @@ Louis Manière
 </section>
 <section id="les-logiciels-de-sgbd-relationnels" class="slide level2">
 <h2>Les logiciels de SGBD relationnels</h2>
-<img data-src="./img/mysql.png" class="r-stretch">
-<p><img data-src="./img/postgresql.png" class="r-stretch"> <img data-src="./img/postgis.png" class="r-stretch"> <img data-src="./img/sqlite.png" class="r-stretch"> <img data-src="./img/spatialite.png" class="r-stretch"> <img data-src="./img/oracle.png" class="r-stretch"></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="./img/postgresql.png" style="width:30.0%"></p>
+<p><img data-src="./img/postgis.png" style="width:30.0%"></p>
+<p><br>
+</p>
+<p><img data-src="./img/mysql.png" style="width:45.0%"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="./img/sqlite.png" style="width:60.0%"></p>
+<p><img data-src="./img/spatialite.png" style="width:40.0%"></p>
+<p><br>
+<br>
+</p>
+<p><img data-src="./img/oracle.png" style="width:45.0%"></p>
+</div></div>
 </section>
 <section id="les-bases-de-données-relationnelles" class="slide level2">
 <h2>Les bases de données relationnelles</h2>
@@ -395,7 +473,13 @@ Louis Manière
 <li>Les données sont stockées dans des tables</li>
 <li>Les tables sont reliées entre elles par des clés</li>
 </ul>
-<p>Objectifs : - Eviter la redondance d’information - Eviter les incohérences - Faciliter la mise à jour des données - Faciliter la recherche d’information</p>
+<p>Objectifs :</p>
+<ul>
+<li>Eviter la redondance d’information</li>
+<li>Eviter les incohérences</li>
+<li>Faciliter la mise à jour des données</li>
+<li>Faciliter la recherche d’information</li>
+</ul>
 </section>
 <section id="clés-primaires-et-clés-étrangères" class="slide level2">
 <h2>Clés primaires et clés étrangères</h2>
@@ -411,7 +495,7 @@ Louis Manière
 </ul>
 </section>
 <section id="construisons-une-base-de-données" class="slide level2">
-<h2>Construisons une base de données ?</h2>
+<h2>Construisons une base de données</h2>
 <ul>
 <li>Cours d’eau</li>
 <li>Bassins versants</li>
@@ -422,7 +506,98 @@ Louis Manière
 </section>
 <section id="modèle-conceptuel-de-données-mcd" class="slide level2">
 <h2>Modèle conceptuel de données (MCD)</h2>
-<p><img data-src="./img/bd_cours_eau.webp"></p>
+
+<img data-src="./img/bd_cours_eau.webp" class="r-stretch"></section>
+<section id="le-sql-structured-query-langage" class="slide level2">
+<h2>Le SQL (Structured Query Langage)</h2>
+<ul>
+<li>Proche du langage naturel</li>
+<li>Le langage permettant d’intéragir avec une base de données
+<ul>
+<li>Langage de définition des données (LDD) = création d’une table</li>
+<li>Langage de manipulation des données (LMD) = ajout, mise à jour, suppression ou lecture de lignes</li>
+<li>Langage de contrôle de données (LCD) = j’autorise Maurice à consulter ces tables mais pas à les modifier</li>
+</ul></li>
+</ul>
+</section>
+<section id="principales-instructions-sql" class="slide level2 smaller">
+<h2>Principales instructions SQL</h2>
+<p><br>
+</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Définition
+<ul>
+<li>CREATE = création d’une table</li>
+<li>DROP = suppression d’une table</li>
+<li>ALTER = modification d’une table</li>
+</ul></li>
+<li>Mise à jour et lecture de ligne
+<ul>
+<li>INSERT = ajout</li>
+<li>DELETE = suppression</li>
+<li>UPDATE = mise à jour</li>
+<li>SELECT = consultation</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>Contrôle d’autorisation d’accès
+<ul>
+<li>GRANT = affectaction de droits</li>
+<li>REVOKE = suppression de droits</li>
+</ul></li>
+<li>Gestion de transaction
+<ul>
+<li>COMMIT = validation de modifications</li>
+<li>ROLLBACK = annulation de modifications</li>
+</ul></li>
+</ul>
+</div></div>
+</section>
+<section id="les-select" class="slide level2">
+<h2>Les SELECT</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href=""></a><span class="kw">SELECT</span> nom, longueur <span class="co">--champs/colonnes</span></span>
+<span id="cb1-2"><a href=""></a><span class="kw">FROM</span> cours_eau <span class="co">--table</span></span>
+<span id="cb1-3"><a href=""></a><span class="kw">WHERE</span> longueur <span class="op">&gt;</span> <span class="dv">5</span>; <span class="co">--conditions/filtres</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>En français : <strong>Sélectionne</strong> les champs <em>nom</em> et <em>longueur</em> <strong>depuis</strong> la table <em>cours_eau</em> <strong>où</strong> les valeurs du champ <em>longueur &gt; 5</em>.</p>
+<p><br>
+</p>
+<p>Exemple plus complet</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href=""></a><span class="kw">SELECT</span> colonne1, colonne2 <span class="co">--champs/colonnes</span></span>
+<span id="cb2-2"><a href=""></a><span class="kw">FROM</span> <span class="kw">table</span> <span class="co">--table</span></span>
+<span id="cb2-3"><a href=""></a><span class="kw">WHERE</span> colonne2 <span class="op">&gt;</span> x <span class="co">--conditions/filtres</span></span>
+<span id="cb2-4"><a href=""></a><span class="kw">GROUP</span> <span class="kw">BY</span> colonne1 <span class="co">--aggrégation</span></span>
+<span id="cb2-5"><a href=""></a><span class="kw">HAVING</span> <span class="fu">count</span>(colonne1) <span class="op">&gt;</span> y <span class="co">--filtre sur l'aggrégation</span></span>
+<span id="cb2-6"><a href=""></a><span class="kw">ORDER</span> <span class="kw">BY</span> colonne1 <span class="kw">ASC</span> <span class="co">--tri</span></span>
+<span id="cb2-7"><a href=""></a><span class="kw">LIMIT</span> <span class="dv">10</span>; <span class="co">--limite le nombre de résultats</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="les-jointures" class="slide level2">
+<h2>Les jointures</h2>
+<p>Permet de combiner les données de plusieurs tables en fonction de clés communes.</p>
+<ul>
+<li>INNER JOIN : retourne les lignes lorsque qu’il y a au moins une correspondance dans les deux tables</li>
+<li>LEFT JOIN : retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite</li>
+<li>RIGHT JOIN : retourne toutes les lignes de la table de droite et les lignes correspondantes de la table de gauche</li>
+<li>FULL JOIN : retourne toutes les lignes lorsque qu’il y a une correspondance dans une des deux tables</li>
+</ul>
+</section>
+<section id="exemple-de-jointure" class="slide level2">
+<h2>Exemple de jointure</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href=""></a><span class="kw">SELECT</span> cours_eau.nom, bassin_versant.nom</span>
+<span id="cb3-2"><a href=""></a><span class="kw">FROM</span> cours_eau</span>
+<span id="cb3-3"><a href=""></a><span class="kw">INNER</span> <span class="kw">JOIN</span> bassin_versant  <span class="co">--jointure avec la table bassin_versant</span></span>
+<span id="cb3-4"><a href=""></a>  <span class="kw">ON</span> cours_eau.id_bassin <span class="op">=</span> bassin_versant.<span class="kw">id</span>; <span class="co">--clé de jointure</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
+<p>On sélectionne le nom du cours d’eau et le nom du bassin versant <strong>depuis</strong> la table <em>cours_eau</em> <strong>en joignant</strong> la table <em>bassin_versant</em> <strong>sur</strong> la clé <em>id_bassin</em> (clé étrangère dans la table cours_eau).</p>
+</section>
+<section id="a-vous-de-jouer" class="slide level2">
+<h2>A vous de jouer !</h2>
+<p>rdv sur le site</p>
 <div class="quarto-auto-generated-content">
 <p><img src="./img/universite-tours-logo.png" class="slide-logo"></p>
 <div class="footer footer-default">
@@ -589,14 +764,14 @@ Louis Manière
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'none',
+        transition: 'slide',
 
         // Transition speed (default/fast/slow)
         transitionSpeed: 'default',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
+        backgroundTransition: 'fade',
 
         // Number of slides away from the current that are visible
         viewDistance: 3,

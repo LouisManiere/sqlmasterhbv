@@ -1,5 +1,5 @@
 ---
-title: "sqlmasterhbv"
+title: "Introduction aux bases de données relationnelles"
 subtitle: "Master Hydrosystèmes et Bassins Versants"
 author: "Louis Manière"
 institute: "Université de Tours"
@@ -8,6 +8,8 @@ license: "code : MIT License, presentation : CC BY-NC"
 lang: "fr"
 format: 
   revealjs:
+    transition: slide
+    background-transition: fade
     navigation-mode: vertical
     theme: custom.scss
     logo: "./img/universite-tours-logo.png"
@@ -38,11 +40,10 @@ editor: visual
 - Un ensemble de qui va permettre de structurer et de stocker des données :
   - des données
   - un système de gestion de base de données (SGBD)
-  
-:::
 
+:::
 ::: {.column width="50%"}
-  
+
 ![](./img/database_intro.jpg) [^1]
 
 :::
@@ -61,14 +62,28 @@ editor: visual
   
 ## Les logiciels de SGBD relationnels
 
-![](./img/mysql.png){.r-stretch}
+::: columns
+::: {.column width="50%"}
+![](./img/postgresql.png){width="30%"}
 
-![](./img/postgresql.png){.r-stretch}
-![](./img/postgis.png){.r-stretch}
-![](./img/sqlite.png){.r-stretch}
-![](./img/spatialite.png){.r-stretch}
-![](./img/oracle.png){.r-stretch}
+![](./img/postgis.png){width="30%"}
 
+\
+
+![](./img/mysql.png){width="45%"}
+:::
+
+::: {.column width="50%"}
+![](./img/sqlite.png){width="60%"}
+
+![](./img/spatialite.png){width="40%"}
+
+\
+\
+
+![](./img/oracle.png){width="45%"}
+:::
+:::
 
 ## Les bases de données relationnelles
 
@@ -76,6 +91,7 @@ editor: visual
 - Les tables sont reliées entre elles par des clés
 
 Objectifs :
+
 - Eviter la redondance d'information
 - Eviter les incohérences
 - Faciliter la mise à jour des données
@@ -91,7 +107,7 @@ Objectifs :
   - 1-n : 1 ligne table 1 = n lignes table 2
   - n-n : n lignes table 1 = n lignes table 2
 
-## Construisons une base de données ?
+## Construisons une base de données
 
 - Cours d'eau
 - Bassins versants
@@ -103,9 +119,92 @@ Objectifs :
 
 ![](./img/bd_cours_eau.webp)
 
+## Le SQL (Structured Query Langage)
 
+- Proche du langage naturel
+- Le langage permettant d'intéragir avec une base de données
+  - Langage de définition des données (LDD) = création d'une table
+  - Langage de manipulation des données (LMD) = ajout, mise à jour, suppression ou lecture de lignes
+  - Langage de contrôle de données (LCD) = j'autorise Maurice à consulter ces tables mais pas à les modifier
 
+## Principales instructions SQL {.smaller}
 
+\
 
+::: columns
+::: {.column width="50%"}
 
+- Définition
+  - CREATE = création d'une table
+  - DROP = suppression d'une table
+  - ALTER = modification d'une table
+- Mise à jour et lecture de ligne
+  - INSERT = ajout
+  - DELETE = suppression
+  - UPDATE = mise à jour
+  - SELECT = consultation
+  
+:::
+::: {.column width="50%"}
+
+- Contrôle d'autorisation d'accès
+  - GRANT = affectaction de droits
+  - REVOKE = suppression de droits
+- Gestion de transaction
+  - COMMIT = validation de modifications
+  - ROLLBACK = annulation de modifications
+
+:::
+:::
+
+## Les SELECT
+
+```sql
+SELECT nom, longueur --champs/colonnes
+FROM cours_eau --table
+WHERE longueur > 5; --conditions/filtres
+```
+
+\
+
+En français : **Sélectionne** les champs *nom* et *longueur* **depuis** la table *cours_eau* **où** les valeurs du champ *longueur > 5*.
+
+\
+
+Exemple plus complet
+```sql
+SELECT colonne1, colonne2 --champs/colonnes
+FROM table --table
+WHERE colonne2 > x --conditions/filtres
+GROUP BY colonne1 --aggrégation
+HAVING count(colonne1) > y --filtre sur l'aggrégation
+ORDER BY colonne1 ASC --tri
+LIMIT 10; --limite le nombre de résultats
+```
+
+## Les jointures
+
+Permet de combiner les données de plusieurs tables en fonction de clés communes.
+
+- INNER JOIN : retourne les lignes lorsque qu'il y a au moins une correspondance dans les deux tables
+- LEFT JOIN : retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite
+- RIGHT JOIN : retourne toutes les lignes de la table de droite et les lignes correspondantes de la table de gauche
+- FULL JOIN : retourne toutes les lignes lorsque qu'il y a une correspondance dans une des deux tables
+
+## Exemple de jointure
+
+```sql
+SELECT cours_eau.nom, bassin_versant.nom
+FROM cours_eau
+INNER JOIN bassin_versant  --jointure avec la table bassin_versant
+  ON cours_eau.id_bassin = bassin_versant.id; --clé de jointure
+```
+
+\
+
+On sélectionne le nom du cours d'eau et le nom du bassin versant **depuis** la table *cours_eau* **en joignant** la table *bassin_versant* **sur** la clé *id_bassin* (clé étrangère dans la table cours_eau).
+
+## A vous de jouer !
+
+rdv sur le site
 
