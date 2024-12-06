@@ -1,5 +1,6 @@
 project:
   title: "sqlmasterhbv"
+  output-dir: docs
 
 editor: visual
 
