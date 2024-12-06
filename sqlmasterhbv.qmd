@@ -1,0 +1,111 @@
+---
+title: "sqlmasterhbv"
+subtitle: "Master Hydrosystèmes et Bassins Versants"
+author: "Louis Manière"
+institute: "Université de Tours"
+date: last-modified
+license: "code : MIT License, presentation : CC BY-NC"
+lang: "fr"
+format: 
+  revealjs:
+    navigation-mode: vertical
+    theme: custom.scss
+    logo: "./img/universite-tours-logo.png"
+    footer: "Master 2 Hydrosystèmes et Bassins Versants 2024-2025"
+    css: custom.css
+    slide-number: true
+    show-slide-number: all
+    smaller: false
+    chalkboard: true
+    margin: 0.2
+    width: 1150
+    df-print: kable
+editor: visual
+---
+
+# Introduction aux base de données et au langage SQL
+
+## Plan du cours
+
+
+## Une base de données, c'est quoi ?
+
+\
+
+::: columns
+::: {.column width="50%"}
+
+- Un ensemble de qui va permettre de structurer et de stocker des données :
+  - des données
+  - un système de gestion de base de données (SGBD)
+  
+:::
+
+::: {.column width="50%"}
+  
+![](./img/database_intro.jpg) [^1]
+
+:::
+:::
+
+[^1]: ["Original Database"](https://www.flickr.com/photos/8052628@N05/3835365695) by [shindoverse](https://www.flickr.com/photos/8052628@N05) is licensed under [CC BY-NC-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/?ref=openverse).
+
+## Un SGBD ? 🤔
+
+- Un logiciel qui permet de stocker, de manipuler et de récupérer des données.
+- Il existe plusieurs types de SGBD :
+  - relationnels
+  - NoSQL
+  - objets
+  - etc.
+  
+## Les logiciels de SGBD relationnels
+
+![](./img/mysql.png){.r-stretch}
+
+![](./img/postgresql.png){.r-stretch}
+![](./img/postgis.png){.r-stretch}
+![](./img/sqlite.png){.r-stretch}
+![](./img/spatialite.png){.r-stretch}
+![](./img/oracle.png){.r-stretch}
+
+
+## Les bases de données relationnelles
+
+- Les données sont stockées dans des tables
+- Les tables sont reliées entre elles par des clés
+
+Objectifs :
+- Eviter la redondance d'information
+- Eviter les incohérences
+- Faciliter la mise à jour des données
+- Faciliter la recherche d'information
+
+## Clés primaires et clés étrangères
+
+- Clé primaire : identifiant unique d'une ligne
+- Clé étrangère : identifiant d'une ligne d'une autre table
+
+- Type de relation :
+  - 1-1 : 1 ligne table 1 = 1 ligne table 2
+  - 1-n : 1 ligne table 1 = n lignes table 2
+  - n-n : n lignes table 1 = n lignes table 2
+
+## Construisons une base de données ?
+
+- Cours d'eau
+- Bassins versants
+- Stations de mesures
+- Site de travaux
+- Inventaire d'espèces
+
+## Modèle conceptuel de données (MCD)
+
+![](./img/bd_cours_eau.webp)
+
+
+
+
+
+
+
