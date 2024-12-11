@@ -412,8 +412,8 @@ Louis Manière
   <p class="date">2024-12-11</p>
 </section>
 <section>
-<section id="introduction-aux-base-de-données-et-au-langage-sql" class="title-slide slide level1 center">
-<h1>Introduction aux base de données et au langage SQL</h1>
+<section id="introduction-aux-bases-de-données-et-au-langage-sql" class="title-slide slide level1 center">
+<h1>Introduction aux bases de données et au langage SQL</h1>
 
 </section>
 <section id="une-base-de-données-cest-quoi" class="slide level2">
@@ -464,6 +464,18 @@ Louis Manière
 <p><img data-src="./img/oracle.png" style="width:45.0%"></p>
 </div></div>
 </section>
+<section id="une-architecture-client-serveur" class="slide level2">
+<h2>Une architecture client-serveur</h2>
+<ul>
+<li>Un serveur qui héberge la base de données</li>
+<li>Des clients qui se connectent au serveur pour interagir avec la base de données
+<ul>
+<li>Connexion au serveur par le nom de l’hôte, le port, le nom de la base de données, le nom d’utilisateur et le mot de passe</li>
+<li>Interface graphique (pgAdmin4, DBeaver, QGIS)</li>
+<li>Ligne de commande (psql)</li>
+</ul></li>
+</ul>
+</section>
 <section id="les-bases-de-données-relationnelles" class="slide level2">
 <h2>Les bases de données relationnelles</h2>
 <ul>
@@ -476,18 +488,6 @@ Louis Manière
 <li>Eviter les incohérences</li>
 <li>Faciliter la mise à jour des données</li>
 <li>Faciliter la recherche d’information</li>
-</ul>
-</section>
-<section id="une-architecture-client-serveur" class="slide level2">
-<h2>Une architecture client-serveur</h2>
-<ul>
-<li>Un serveur qui héberge la base de données</li>
-<li>Des clients qui se connectent au serveur pour interagir avec la base de données
-<ul>
-<li>Connexion au serveur par le nom de l’hôte, le port, le nom de la base de données, le nom d’utilisateur et le mot de passe</li>
-<li>Interface graphique (pgAdmin4, DBeaver, QGIS)</li>
-<li>Ligne de commande (psql)</li>
-</ul></li>
 </ul>
 </section>
 <section id="clés-primaires-et-clés-étrangères" class="slide level2">
@@ -503,14 +503,18 @@ Louis Manière
 </ul></li>
 </ul>
 </section>
+<section id="exemple" class="slide level2">
+<h2>Exemple</h2>
+
+<img data-src="./img/bd_cours.webp" style="width:100.0%" class="r-stretch"></section>
 <section id="construisons-une-base-de-données" class="slide level2">
 <h2>Construisons une base de données</h2>
 <ul>
 <li>Cours d’eau</li>
 <li>Bassins versants</li>
 <li>Stations de mesures</li>
-<li>Site de travaux</li>
-<li>Inventaire d’espèces</li>
+<li>Sites de travaux</li>
+<li>Espèces de poissons</li>
 </ul>
 </section>
 <section id="modèle-conceptuel-de-données-mcd" class="slide level2">

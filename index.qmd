@@ -25,7 +25,7 @@ format:
 editor: visual
 ---
 
-# Introduction aux base de données et au langage SQL
+# Introduction aux bases de données et au langage SQL
 
 
 ## Une base de données, c'est quoi ?
@@ -83,6 +83,14 @@ editor: visual
 :::
 :::
 
+## Une architecture client-serveur
+
+- Un serveur qui héberge la base de données
+- Des clients qui se connectent au serveur pour interagir avec la base de données
+  - Connexion au serveur par le nom de l'hôte, le port, le nom de la base de données, le nom d'utilisateur et le mot de passe
+  - Interface graphique (pgAdmin4, DBeaver, QGIS)
+  - Ligne de commande (psql)
+
 ## Les bases de données relationnelles
 
 - Les données sont stockées dans des tables
@@ -95,14 +103,6 @@ Objectifs :
 - Faciliter la mise à jour des données
 - Faciliter la recherche d'information
 
-## Une architecture client-serveur
-
-- Un serveur qui héberge la base de données
-- Des clients qui se connectent au serveur pour interagir avec la base de données
-  - Connexion au serveur par le nom de l'hôte, le port, le nom de la base de données, le nom d'utilisateur et le mot de passe
-  - Interface graphique (pgAdmin4, DBeaver, QGIS)
-  - Ligne de commande (psql)
-
 ## Clés primaires et clés étrangères
 
 - Clé primaire : identifiant unique d'une ligne
@@ -112,14 +112,18 @@ Objectifs :
   - 1-1 : 1 ligne table 1 = 1 ligne table 2
   - 1-n : 1 ligne table 1 = n lignes table 2
   - n-n : n lignes table 1 = n lignes table 2
+  
+## Exemple
+
+![](./img/bd_cours.webp){width="100%"}
 
 ## Construisons une base de données
 
 - Cours d'eau
 - Bassins versants
 - Stations de mesures
-- Site de travaux
-- Inventaire d'espèces
+- Sites de travaux
+- Espèces de poissons
 
 ## Modèle conceptuel de données (MCD)
 
