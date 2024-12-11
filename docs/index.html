@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="author" content="Louis Manière">
-  <meta name="dcterms.date" content="2024-12-06">
+  <meta name="dcterms.date" content="2024-12-11">
   <title>Introduction aux bases de données relationnelles</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -409,15 +409,12 @@ Louis Manière
     </div>
 </div>
 
-  <p class="date">2024-12-06</p>
+  <p class="date">2024-12-11</p>
 </section>
 <section>
 <section id="introduction-aux-base-de-données-et-au-langage-sql" class="title-slide slide level1 center">
 <h1>Introduction aux base de données et au langage SQL</h1>
 
-</section>
-<section id="plan-du-cours" class="slide level2">
-<h2>Plan du cours</h2>
 </section>
 <section id="une-base-de-données-cest-quoi" class="slide level2">
 <h2>Une base de données, c’est quoi ?</h2>
@@ -481,12 +478,24 @@ Louis Manière
 <li>Faciliter la recherche d’information</li>
 </ul>
 </section>
+<section id="une-architecture-client-serveur" class="slide level2">
+<h2>Une architecture client-serveur</h2>
+<ul>
+<li>Un serveur qui héberge la base de données</li>
+<li>Des clients qui se connectent au serveur pour interagir avec la base de données
+<ul>
+<li>Connexion au serveur par le nom de l’hôte, le port, le nom de la base de données, le nom d’utilisateur et le mot de passe</li>
+<li>Interface graphique (pgAdmin4, DBeaver, QGIS)</li>
+<li>Ligne de commande (psql)</li>
+</ul></li>
+</ul>
+</section>
 <section id="clés-primaires-et-clés-étrangères" class="slide level2">
 <h2>Clés primaires et clés étrangères</h2>
 <ul>
 <li><p>Clé primaire : identifiant unique d’une ligne</p></li>
 <li><p>Clé étrangère : identifiant d’une ligne d’une autre table</p></li>
-<li><p>Type de relation :</p>
+<li><p>Type de relation (cardinalité) :</p>
 <ul>
 <li>1-1 : 1 ligne table 1 = 1 ligne table 2</li>
 <li>1-n : 1 ligne table 1 = n lignes table 2</li>
@@ -577,27 +586,48 @@ Louis Manière
 </section>
 <section id="les-jointures" class="slide level2">
 <h2>Les jointures</h2>
-<p>Permet de combiner les données de plusieurs tables en fonction de clés communes.</p>
-<ul>
-<li>INNER JOIN : retourne les lignes lorsque qu’il y a au moins une correspondance dans les deux tables</li>
-<li>LEFT JOIN : retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite</li>
-<li>RIGHT JOIN : retourne toutes les lignes de la table de droite et les lignes correspondantes de la table de gauche</li>
-<li>FULL JOIN : retourne toutes les lignes lorsque qu’il y a une correspondance dans une des deux tables</li>
-</ul>
-</section>
+
+<img data-src="./img/jointures.png" style="width:100.0%" class="r-stretch"></section>
 <section id="exemple-de-jointure" class="slide level2">
 <h2>Exemple de jointure</h2>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource sql number-lines code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href=""></a><span class="kw">SELECT</span> cours_eau.nom, bassin_versant.nom</span>
 <span id="cb3-2"><a href=""></a><span class="kw">FROM</span> cours_eau</span>
 <span id="cb3-3"><a href=""></a><span class="kw">INNER</span> <span class="kw">JOIN</span> bassin_versant  <span class="co">--jointure avec la table bassin_versant</span></span>
-<span id="cb3-4"><a href=""></a>  <span class="kw">ON</span> cours_eau.id_bassin <span class="op">=</span> bassin_versant.<span class="kw">id</span>; <span class="co">--clé de jointure</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href=""></a>  <span class="kw">ON</span> cours_eau.id_bassin <span class="op">=</span> bassin_versant.<span class="kw">id</span>; <span class="co">--clés de jointure</span></span></code><button title="Copier vers le presse-papier" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br>
 </p>
 <p>On sélectionne le nom du cours d’eau et le nom du bassin versant <strong>depuis</strong> la table <em>cours_eau</em> <strong>en joignant</strong> la table <em>bassin_versant</em> <strong>sur</strong> la clé <em>id_bassin</em> (clé étrangère dans la table cours_eau).</p>
 </section>
+<section id="postgis" class="slide level2">
+<h2>PostGIS</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<ul>
+<li>Extension de PostgreSQL qui permet de gérer des données géographiques</li>
+<li>Surtout utilisé pour les données vectorielles (points, lignes, polygones) :</li>
+</ul>
+</div><div class="column" style="width:20%;">
+<p><img data-src="./img/postgis.png" style="width:100.0%"></p>
+</div></div>
+<ul>
+<li><span style="font-size: 0.9em;">requêtes spatiales (ST_OVERLAPS, ST_CONTAINS, ST_WITHIN, ST_EQUALS)</span></li>
+<li><span style="font-size: 0.9em;">calculs géométriques (ST_AREA, ST_LENGTH)</span></li>
+<li><span style="font-size: 0.9em;">analyses spatiales (ST_BUFFER, ST_INTERSECTION, ST_UNION)</span></li>
+<li><span style="font-size: 0.9em;">traitements de données (ST_TRANSFORM, ST_CENTROID)</span></li>
+<li><span style="font-size: 0.9em;">créer des index spatiaux (GIST)</span></li>
+</ul>
+</section>
 <section id="a-vous-de-jouer" class="slide level2">
 <h2>A vous de jouer !</h2>
-<p>rdv sur le site</p>
+<p>Sur le site avec l’option PostgreSQL <a href="https://sqlzoo.net/">SQLZoo</a> :</p>
+<ul>
+<li><a href="https://sqlzoo.net/wiki/SELECT_basics">Basics</a></li>
+<li><a href="https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial">SELECT FROM WORLD</a></li>
+<li><a href="https://sqlzoo.net/wiki/SELECT_from_Nobel_Tutorial">SELECT FROM NOBEL (facultatif)</a></li>
+<li><a href="https://sqlzoo.net/wiki/SELECT_within_SELECT_Tutorial">SELECT IN SELECT (facultatif)</a></li>
+<li><a href="https://sqlzoo.net/wiki/SUM_and_COUNT">SUM and COUNT</a></li>
+<li><a href="https://sqlzoo.net/wiki/The_JOIN_operation">Les jointures</a></li>
+</ul>
 <div class="quarto-auto-generated-content">
 <p><img src="./img/universite-tours-logo.png" class="slide-logo"></p>
 <div class="footer footer-default">

@@ -27,8 +27,6 @@ editor: visual
 
 # Introduction aux base de données et au langage SQL
 
-## Plan du cours
-
 
 ## Une base de données, c'est quoi ?
 
@@ -97,12 +95,20 @@ Objectifs :
 - Faciliter la mise à jour des données
 - Faciliter la recherche d'information
 
+## Une architecture client-serveur
+
+- Un serveur qui héberge la base de données
+- Des clients qui se connectent au serveur pour interagir avec la base de données
+  - Connexion au serveur par le nom de l'hôte, le port, le nom de la base de données, le nom d'utilisateur et le mot de passe
+  - Interface graphique (pgAdmin4, DBeaver, QGIS)
+  - Ligne de commande (psql)
+
 ## Clés primaires et clés étrangères
 
 - Clé primaire : identifiant unique d'une ligne
 - Clé étrangère : identifiant d'une ligne d'une autre table
 
-- Type de relation :
+- Type de relation (cardinalité) :
   - 1-1 : 1 ligne table 1 = 1 ligne table 2
   - 1-n : 1 ligne table 1 = n lignes table 2
   - n-n : n lignes table 1 = n lignes table 2
@@ -184,12 +190,7 @@ LIMIT 10; --limite le nombre de résultats
 
 ## Les jointures
 
-Permet de combiner les données de plusieurs tables en fonction de clés communes.
-
-- INNER JOIN : retourne les lignes lorsque qu'il y a au moins une correspondance dans les deux tables
-- LEFT JOIN : retourne toutes les lignes de la table de gauche et les lignes correspondantes de la table de droite
-- RIGHT JOIN : retourne toutes les lignes de la table de droite et les lignes correspondantes de la table de gauche
-- FULL JOIN : retourne toutes les lignes lorsque qu'il y a une correspondance dans une des deux tables
+![](./img/jointures.png){width="100%"}
 
 ## Exemple de jointure
 
@@ -197,14 +198,43 @@ Permet de combiner les données de plusieurs tables en fonction de clés commune
 SELECT cours_eau.nom, bassin_versant.nom
 FROM cours_eau
 INNER JOIN bassin_versant  --jointure avec la table bassin_versant
-  ON cours_eau.id_bassin = bassin_versant.id; --clé de jointure
+  ON cours_eau.id_bassin = bassin_versant.id; --clés de jointure
 ```
 
 \
 
 On sélectionne le nom du cours d'eau et le nom du bassin versant **depuis** la table *cours_eau* **en joignant** la table *bassin_versant* **sur** la clé *id_bassin* (clé étrangère dans la table cours_eau).
 
+## PostGIS
+
+::: columns
+::: {.column width="80%"}
+
+- Extension de PostgreSQL qui permet de gérer des données géographiques
+- Surtout utilisé pour les données vectorielles (points, lignes, polygones) :
+
+:::
+::: {.column width="20%"}
+
+![](./img/postgis.png){width="100%"}
+
+:::
+:::
+
+- [requêtes spatiales (ST_OVERLAPS, ST_CONTAINS, ST_WITHIN, ST_EQUALS)]{style="font-size: 0.9em;"}
+- [calculs géométriques (ST_AREA, ST_LENGTH)]{style="font-size: 0.9em;"}
+- [analyses spatiales (ST_BUFFER, ST_INTERSECTION, ST_UNION)]{style="font-size: 0.9em;"}
+- [traitements de données (ST_TRANSFORM, ST_CENTROID)]{style="font-size: 0.9em;"}
+- [créer des index spatiaux (GIST)]{style="font-size: 0.9em;"}
+
 ## A vous de jouer !
 
-rdv sur le site
+Sur le site avec l'option PostgreSQL [SQLZoo](https://sqlzoo.net/) :
+
+- [Basics](https://sqlzoo.net/wiki/SELECT_basics)
+- [SELECT FROM WORLD](https://sqlzoo.net/wiki/SELECT_from_WORLD_Tutorial)
+- [SELECT FROM NOBEL (facultatif)](https://sqlzoo.net/wiki/SELECT_from_Nobel_Tutorial)
+- [SELECT IN SELECT (facultatif)](https://sqlzoo.net/wiki/SELECT_within_SELECT_Tutorial)
+- [SUM and COUNT](https://sqlzoo.net/wiki/SUM_and_COUNT)
+- [Les jointures](https://sqlzoo.net/wiki/The_JOIN_operation)
 
